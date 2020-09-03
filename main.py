@@ -1,11 +1,5 @@
-import os 
 import json
+import requests
+from lastfmwrapper import lastfm
 
-payload = {
-    'api_key': os.getenv("API_KEY"),
-    'format': 'json',
-    'method': 'user.getRecentTracks',
-}
-
-r = requests.get('http://ws.audioscrobbler.com/2.0/', params=payload)
-jprint(r.json())
+print(lastfm.get_current_track('vector3mapbit'))
