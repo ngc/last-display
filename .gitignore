@@ -1,3 +1,5 @@
 .env
 *.pyc
 .run.sh.swp
+__display__.html
+__coverimg__.png
