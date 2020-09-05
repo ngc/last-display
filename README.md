@@ -24,11 +24,11 @@ The most inconsistent thing across music players is how the album art is display
 
 ![](https://imgur.com/F5gQgLS.png)
 
-Last.display is also 100% customizable. It comes with a premade template called `template.html` but the user is encouraged to change it and style it to their liking. Information is passed into the template through format strings. 
+Last.display is also 100% customizable. It comes with a premade template called `template.html`, but the user is encouraged to change it and style it to their liking. Information is passed into the template through format strings. 
 
 ![](https://i.imgur.com/mg1YdCJ.png)
 
-Since to last.display is powered by Chromium, it is fully responsive and can be displayed in any form you'd like. Although, it is originally made to work best with tiling window managers such as i3.
+Since last.display is powered by Chromium, it is fully responsive and can be displayed in any form you'd like. Although, it is originally made to work best with tiling window managers such as [i3](https://i3wm.org/).
 
 ![](https://imgur.com/iCJYg60.png)
 
@@ -37,7 +37,7 @@ Since to last.display is powered by Chromium, it is fully responsive and can be 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local build up and running follow these steps.
+To get a local build up and running, follow these steps.
 
 ### Prerequisites
 
@@ -49,7 +49,7 @@ To get a local build up and running follow these steps.
 
 To install the software requirements on Ubuntu or Debian, run this command.
 ```sh
-sudo apt install python3.8 git chromium-browser python3-pip
+sudo apt install python3.8 git chromium-browser python3-pip python3-dotenv
 ```
 
 ### Installation

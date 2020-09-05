@@ -7,3 +7,4 @@ __background*
 nohup.out
 .vscode/settings.json
 *.txt
+!requirements.txt
