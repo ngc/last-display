@@ -95,3 +95,5 @@ while True:
     except KeyboardInterrupt:
          if(background_img_name): os.remove(background_img_name)
          os.remove("__coverimg__.png")
+    except:
+        print("ERROR: Unknown error occured, retrying...")
