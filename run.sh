@@ -1,4 +1,3 @@
 #!/bin/bash
-python3 -m http.server 8099 > /dev/null &
-python3 main.py --user > /dev/null &
-#chromium-browser --app="http://0.0.0.0:8989/__display__.html" &
+nohup python3 main.py --user $1 > /dev/null &
+chromium-browser --app="http://0.0.0.0:8099/__display__.html" > /dev/null &
