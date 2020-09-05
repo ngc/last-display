@@ -8,6 +8,19 @@ import sys
 import urllib.request
 from PIL import Image, ImageFilter
 from stackblur import StackBlur
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+import threading
+
+def runserver(path, port=8099):
+    os.chdir(path)
+    httpd = HTTPServer(('', port), SimpleHTTPRequestHandler)
+    httpd.serve_forever()
+
+daemon = threading.Thread(name='daemon_server',
+                          target=runserver,
+                          args=('.', 8099))
+daemon.setDaemon(True)
+daemon.start()
 
 track_name = "Y*7i7"
 track_artist = "Y*7i7"

@@ -1,7 +1,4 @@
 #!/bin/bash
-
-while true
-do
-    ( cmdpid=$BASHPID; (sleep 60; kill $cmdpid) & exec w3m __display__.html )
-done
-
+python3 -m http.server 8099 > /dev/null &
+python3 main.py --user > /dev/null &
+#chromium-browser --app="http://0.0.0.0:8989/__display__.html" &
