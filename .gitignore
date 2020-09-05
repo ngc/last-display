@@ -3,5 +3,7 @@
 .run.sh.swp
 __display__.html
 __coverimg__.png
-__background_img__.png
+__background*
 nohup.out
+.vscode/settings.json
+*.txt

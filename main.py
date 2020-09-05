@@ -10,6 +10,7 @@ from PIL import Image, ImageFilter
 from stackblur import StackBlur
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import threading
+import random, string
 
 def runserver(path, port=8099):
     os.chdir(path)
@@ -18,13 +19,14 @@ def runserver(path, port=8099):
 
 daemon = threading.Thread(name='daemon_server',
                           target=runserver,
-                          args=('.', 8099))
+                          args=('.'))
 daemon.setDaemon(True)
 daemon.start()
 
 track_name = "Y*7i7"
 track_artist = "Y*7i7"
 album_name = "Y*7i7"
+background_img_name = ""
 
 def generate_html(user):
     """Generates HTML as specified to be rendered"""
@@ -32,6 +34,7 @@ def generate_html(user):
     global album_name
     global track_name
     global track_artist
+    global background_img_name
 
     src = lastfm.get_recent_track(user)
 
@@ -47,11 +50,16 @@ def generate_html(user):
             cover_img = Image.open("__coverimg__.png")
             background_img = cover_img.resize((1000, 1000), Image.ANTIALIAS)
             background_img = background_img.filter(StackBlur(20))
-            background_img.save("__background_img__.png")
+            try:
+                os.remove(background_img_name)
+            except:
+                pass
+            background_img_name = "__background_img{0}__.png".format(''.join(random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for i in range(4)))
+            background_img.save(background_img_name)
         album_name = src['album']['#text']
 
         with open('template.html', 'r') as file:
-            raw_html = file.read().format(image_src, track_name, track_artist, (os.getcwd() + "/__display__.html"))
+            raw_html = file.read().format(image_src, track_name, track_artist, (os.getcwd() + "/__display__.html"), background_img_name)
 
         f = open("__display__.html", "w")
         f.write(raw_html)
@@ -78,9 +86,12 @@ args = parser.parse_args()
 while True:
     try:
         if('--feh' in sys.argv):
-            print(generate_feh(args.user))
+            print(generate_feh(args.user), flush=True)
         else:
-            print(generate_html(args.user))
+            print(generate_html(args.user), flush=True)
         sleep(2)
     except ValueError:
         print("ERROR: Track fetch Error, retrying...")
+    except KeyboardInterrupt:
+         if(background_img_name): os.remove(background_img_name)
+         os.remove("__coverimg__.png")

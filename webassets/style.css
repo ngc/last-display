@@ -1,0 +1,18 @@
+.shadow{
+    -webkit-box-shadow: -10px 10px 20px -10px rgba(0,0,0,1);
+    -moz-box-shadow: -10px 10px 20px -10px rgba(0,0,0,1);
+    box-shadow: -10px 10px 20px -10px rgba(0,0,0,1);
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+span { 
+    display:block;
+    margin:0 auto;
+}
