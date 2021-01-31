@@ -3,7 +3,7 @@
   <img src="webassets/lastdisplay.png" width="75%">
 
   <p align="center">
-    The last display you'll ever need for your music player. 
+    The last display for your music player you'll ever need.
 </p>
 
 <!-- TABLE OF CONTENTS -->
